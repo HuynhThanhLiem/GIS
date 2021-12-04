@@ -507,6 +507,26 @@
                 }
             };
 
+            //roofRowLayer
+            const roofRowLayer = new GeoJSONLayer({
+                url: "./geojson/roofRowLayer.geojson"
+            });
+
+            roofRowLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.55,
+                        material: {
+                            color: "#519259"
+                        }
+                    }]
+                }
+            };
+            
+
             ///* ----- ROOF ----- */
             //roofA1Layer
             const roofA1Layer = new GeoJSONLayer({
@@ -557,6 +577,7 @@
                         thirdFloorLayer,
                         centerFloorLayer,
                         roofA1Layer,
+                        roofRowLayer,
                     ] // end layers
             });
 
