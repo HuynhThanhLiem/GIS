@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Bài Thực Hành 2</title>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        #back {
+            position: absolute;
+            bottom: 20px;
+        }
+        
+        #back i {
+            background-image: url(app/public/img/back.svg);
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 100px;
+            height: 25px;
+            padding-left: 25px;
+            padding-top: 2px;
+            margin: 10px;
+            cursor: pointer;
+            background-size: 20px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.16/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/SceneView",
+            "esri/layers/GeoJSONLayer",
+            "esri/layers/SceneLayer", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/request",
+        ], function(Map, SceneView, GeoJSONLayer, SceneLayer,
+            GraphicsLayer, Graphic, esriRequest) {
+            var createGraphic = function(data) {
+                return new Graphic({
+                    geometry: data,
+                    symbol: data.symbol,
+                    attributes: data,
+                    popupTemplate: data.popupTemplate
+                });
+            };
+        
+            /* ----- STAIRS ----- */
+            //stairsA1Layer
+            const stairsA1Layer = new GeoJSONLayer({
+                url: "./geojson/stairsA1Layer.geojson"
+            });
+
+            stairsA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.14,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+            //stairsA2Layer
+            const stairsA2Layer = new GeoJSONLayer({
+                url: "./geojson/stairsA2Layer.geojson"
+            });
+
+            stairsA2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.98,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+            //stairsA3Layer
+            const stairsA3Layer = new GeoJSONLayer({
+                url: "./geojson/stairsA3Layer.geojson"
+            });
+
+            stairsA3Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.14,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+            //stairsA4Layer
+            const stairsA4Layer = new GeoJSONLayer({
+                url: "./geojson/stairsA4Layer.geojson"
+            });
+
+            stairsA4Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 1.4,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+            //stairsA5Layer
+            const stairsA5Layer = new GeoJSONLayer({
+                url: "./geojson/stairsA5Layer.geojson"
+            });
+
+            stairsA5Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+             /* ----- STAIRCASE RAILING ----- */
+            //railingA1
+            const railingA1Layer = new GeoJSONLayer({
+                url: "./geojson/railingA1Layer.geojson"
+            });
+
+            railingA1Layer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#D6D3CF",
+                    outline: {
+                        color: "#D6D3CF"
+                    }
+                }
+            };
+
+            //railingA2
+            const railingA2Layer = new GeoJSONLayer({
+                url: "./geojson/railingA2Layer.geojson"
+            });
+
+            railingA2Layer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#D6D3CF",
+                    outline: {
+                        color: "#D6D3CF"
+                    }
+                }
+            };
+
+            //railingA3
+            const railingA3Layer = new GeoJSONLayer({
+                url: "./geojson/railingA3Layer.geojson"
+            });
+
+            railingA3Layer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#D6D3CF",
+                    outline: {
+                        color: "#D6D3CF"
+                    }
+                }
+            };
+
+            //railingA4
+            const railingA4Layer = new GeoJSONLayer({
+                url: "./geojson/railingA4Layer.geojson"
+            });
+
+            railingA4Layer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#D6D3CF",
+                    outline: {
+                        color: "#D6D3CF"
+                    }
+                }
+            };
+
+            //railingA5
+            const railingA5Layer = new GeoJSONLayer({
+                url: "./geojson/railingA5Layer.geojson"
+            });
+
+            railingA5Layer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#D6D3CF",
+                    outline: {
+                        color: "#D6D3CF"
+                    }
+                }
+            };
+
+            ///* ----- Eaves Layer ----- */
+            //eavesA1Layer
+            const eavesA1Layer = new GeoJSONLayer({
+                url: "./geojson/eavesA1Layer.geojson"
+            });
+
+            eavesA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.1,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+            //eavesA2Layer
+            const eavesA2Layer = new GeoJSONLayer({
+                url: "./geojson/eavesA2Layer.geojson"
+            });
+
+            eavesA2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.3,
+                        material: {
+                            color: "#4D4538"
+                        }
+                    }]
+                }
+            };
+
+            ///* ----- FLOOR ----- */
+            //floorLayer
+            const floorLayer = new GeoJSONLayer({
+                url: "./geojson/floorLayer.geojson"
+            });
+
+            floorLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 1.4,
+                        material: {
+                            color: "#74716D"
+                        }
+                    }]
+                }
+            };
+
+            //firstFloorLayer
+            const firstFloorLayer = new GeoJSONLayer({
+                url: "./geojson/firstFloorLayer.geojson"
+            });
+
+            firstFloorLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 6.45,
+                        material: {
+                            color: "#C3BFB5"
+                        }
+                    }]
+                }
+            };
+
+            //secondFloorLayer
+            const secondFloorLayer = new GeoJSONLayer({
+                url: "./geojson/secondFloorLayer.geojson"
+            });
+
+            secondFloorLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 5.55,
+                        material: {
+                            color: "#C3BFB5"
+                        }
+                    }]
+                }
+            };
+
+            //thirdFloorLayer
+            const thirdFloorLayer = new GeoJSONLayer({
+                url: "./geojson/thirdFloorLayer.geojson"
+            });
+
+            thirdFloorLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 13.45,
+                        material: {
+                            color: "#C3BFB5"
+                        }
+                    }]
+                }
+            };
+            //centerFloorLayer
+            const centerFloorLayer = new GeoJSONLayer({
+                url: "./geojson/centerFloorLayer.geojson"
+            });
+
+            centerFloorLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 13.45,
+                        material: {
+                            color: "#C3D3EC"
+                        }
+                    }]
+                }
+            };
+
+            ///* ----- COLUMN ----- */
+            //columnA1Layer
+            const columnA1Layer = new GeoJSONLayer({
+                url: "./geojson/columnA1Layer.geojson"
+            });
+
+            columnA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 26,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            //columnA2Layer
+            const columnA2Layer = new GeoJSONLayer({
+                url: "./geojson/columnA2Layer.geojson"
+            });
+
+            columnA2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 16,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            //columnA3Layer
+            const columnA3Layer = new GeoJSONLayer({
+                url: "./geojson/columnA3Layer.geojson"
+            });
+
+            columnA3Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 9.55,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            //columnA4Layer
+            const columnA4Layer = new GeoJSONLayer({
+                url: "./geojson/columnA4Layer.geojson"
+            });
+
+            columnA4Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 19.55,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            //columnA5Layer
+            const columnA5Layer = new GeoJSONLayer({
+                url: "./geojson/columnA5Layer.geojson"
+            });
+
+            columnA5Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 14,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            ///* ----- GLASS DOOR ----- */
+            //glassDoorA1Layer
+            const glassDoorA1Layer = new GeoJSONLayer({
+                url: "./geojson/glassDoorA1Layer.geojson"
+            });
+
+            glassDoorA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 6.45,
+                        material: {
+                            color: "#C9BC9D"
+                        }
+                    }]
+                }
+            };
+
+
+            ///* ----- ROW ----- */
+            //rowA1Layer
+            const rowA1Layer = new GeoJSONLayer({
+                url: "./geojson/rowA1Layer.geojson"
+            });
+
+            rowA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.55,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            ///* ----- ROOF ----- */
+            //roofA1Layer
+            const roofA1Layer = new GeoJSONLayer({
+                url: "./geojson/roofA1Layer.geojson"
+            });
+
+            roofA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 1,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+
+            const map = new Map({
+                basemap: "topo-vector",
+                ground: "world-elevation",
+                layers: [
+                        stairsA1Layer,
+                        stairsA2Layer,
+                        stairsA3Layer,
+                        stairsA4Layer,
+                        stairsA5Layer,
+                        railingA1Layer,
+                        railingA2Layer,
+                        railingA3Layer,
+                        railingA4Layer,
+                        railingA5Layer,
+                        eavesA1Layer,
+                        eavesA2Layer,
+                        columnA1Layer,
+                        columnA2Layer,
+                        columnA3Layer,
+                        columnA4Layer,
+                        columnA5Layer,
+                        rowA1Layer,
+                        glassDoorA1Layer,
+                        floorLayer,
+                        firstFloorLayer,
+                        secondFloorLayer,
+                        thirdFloorLayer,
+                        centerFloorLayer,
+                        roofA1Layer,
+                    ] // end layers
+            });
+
+            const view = new SceneView({
+                container: "viewDiv",
+                map: map,
+                camera: {
+                    position: [105.83705049256521, 21.03738829954599, 1000],
+                    heading: 0,
+                    tilt: 0,
+                }
+            });
+
+            view.popup.defaultPopupTemplateEnabled = true;
+        });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>
