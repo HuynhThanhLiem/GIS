@@ -1,0 +1,24 @@
+{
+    "type": "FeatureCollection",
+    "generator": "smartcity",
+    "copyright": "Smartcity",
+    "timestamp": "2021-05-27T09:28:58Z",
+    "features": [{
+            "type": "Feature",
+            "properties": { "Building name": "Stairs", "height": 0.14, "idb": "1" },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [105.83704651392503,21.03706103934114,10],
+                        [105.83709380378338,21.037272315316688,10],
+                        [105.83713530380822,21.037264223372077,10],
+                        [105.83708801401951,21.037052947383447,10],
+                        [105.83704651392503,21.03706103934114,10]
+                    ]
+                ]
+            },
+            "id": "pp1"
+        }
+    ]
+}

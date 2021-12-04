@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Bài Thực Hành 2</title>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        #back {
+            position: absolute;
+            bottom: 20px;
+        }
+        
+        #back i {
+            background-image: url(app/public/img/back.svg);
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 100px;
+            height: 25px;
+            padding-left: 25px;
+            padding-top: 2px;
+            margin: 10px;
+            cursor: pointer;
+            background-size: 20px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.16/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/SceneView",
+            "esri/layers/GeoJSONLayer",
+            "esri/layers/SceneLayer", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/request",
+        ], function(Map, SceneView, GeoJSONLayer, SceneLayer,
+            GraphicsLayer, Graphic, esriRequest) {
+            var createGraphic = function(data) {
+                return new Graphic({
+                    geometry: data,
+                    symbol: data.symbol,
+                    attributes: data,
+                    popupTemplate: data.popupTemplate
+                });
+            };
+            
+            /* ----- LoD2 ----- */
+            //test
+            const testLayer = new GeoJSONLayer({
+                url: "./geojson2/testLayer.geojson"
+            });
+
+            testLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 12.9,
+                        material: {
+                            color: "#7befb2"
+                        }
+                    }]
+                }
+            };
+
+            //firstLayer
+            const firstLayer = new GeoJSONLayer({
+                url: "./geojson2/firstLayer.geojson"
+            });
+
+            firstLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 12.9,
+                        material: {
+                            color: "#7befb2"
+                        }
+                    }]
+                }
+            };
+
+            //secondLayer
+            const secondLayer = new GeoJSONLayer({
+                url: "./geojson2/secondLayer.geojson"
+            });
+
+            secondLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 12.1,
+                        material: {
+                            color: "#A2D2FF"
+                        }
+                    }]
+                }
+            };
+
+            //secondTwoLayer
+            const secondTwoLayer = new GeoJSONLayer({
+                url: "./geojson2/secondTwoLayer.geojson"
+            });
+
+            secondTwoLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 12.1,
+                        material: {
+                            color: "#A2D2FF"
+                        }
+                    }]
+                }
+            };
+
+            //secondThreeLayer
+            const secondThreeLayer = new GeoJSONLayer({
+                url: "./geojson2/secondThreeLayer.geojson"
+            });
+
+            secondThreeLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 12.1,
+                        material: {
+                            color: "#A2D2FF"
+                        }
+                    }]
+                }
+            };
+
+            //secondFourLayer
+            const secondFourLayer = new GeoJSONLayer({
+                url: "./geojson2/secondFourLayer.geojson"
+            });
+
+            secondFourLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 12.1,
+                        material: {
+                            color: "#A2D2FF"
+                        }
+                    }]
+                }
+            };
+
+            //centerSecondLayer
+            const centerSecondLayer = new GeoJSONLayer({
+                url: "./geojson2/centerSecondLayer.geojson"
+            });
+
+            centerSecondLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 13.1,
+                        material: {
+                            color: "#845EC2"
+                        }
+                    }]
+                }
+            };
+
+            //circleSmallLayer
+            const circleSmallLayer = new GeoJSONLayer({
+                url: "./geojson2/circleSmallLayer.geojson"
+            });
+
+            circleSmallLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.1,
+                        material: {
+                            color: "#f77f00"
+                        }
+                    }]
+                }
+            };
+
+            //circleBigLayer
+            const circleBigLayer = new GeoJSONLayer({
+                url: "./geojson2/circleBigLayer.geojson"
+            });
+
+            circleBigLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.1,
+                        material: {
+                            color: "#f77f00"
+                        }
+                    }]
+                }
+            };
+
+            //surroundingLayer
+            const surroundingLayer = new GeoJSONLayer({
+                url: "./geojson2/surroundingLayer.geojson"
+            });
+
+            surroundingLayer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#f77f00",
+                    outline: {
+                        color: "#f77f00"
+                    }
+                }
+            };
+
+            //ExLayer
+            const ExLayer = new GeoJSONLayer({
+                url: "./geojson2/ExLayer.geojson"
+            });
+
+            ExLayer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#f77f00",
+                    outline: {
+                        color: "#f77f00"
+                    }
+                }
+            };
+
+            //Ex2Layer
+            const Ex2Layer = new GeoJSONLayer({
+                url: "./geojson2/Ex2Layer.geojson"
+            });
+
+            Ex2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.14,
+                        material: {
+                            color: "#f77f00"
+                        }
+                    }]
+                }
+            };
+
+
+
+
+            const map = new Map({
+                basemap: "topo-vector",
+                ground: "world-elevation",
+                layers: [
+                    //testLayer,
+                        firstLayer,
+                        secondLayer,
+                        secondTwoLayer,
+                        secondThreeLayer,
+                        secondFourLayer,
+                        centerSecondLayer,
+                        circleSmallLayer,
+                        circleBigLayer,
+                        surroundingLayer,
+                        ExLayer,
+                        Ex2Layer,
+                    ] // end layers
+            });
+
+            const view = new SceneView({
+                container: "viewDiv",
+                map: map,
+                camera: {
+                    position: [105.83705049256521, 21.03738829954599, 1000],
+                    heading: 0,
+                    tilt: 0,
+                }
+            });
+
+            view.popup.defaultPopupTemplateEnabled = true;
+        });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>
