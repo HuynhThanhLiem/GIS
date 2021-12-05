@@ -378,7 +378,7 @@
         },
         {
             "type": "Feature",
-            "properties": { "Building name": "Border", "height": 0.55, "idb": "1" },
+            "properties": { "Building name": "Circle", "height": 0.55, "idb": "1" },
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
@@ -1112,7 +1112,7 @@
         },
         {
             "type": "Feature",
-            "properties": { "Building name": "Border", "height": 0.55, "idb": "1" },
+            "properties": { "Building name": "Circle", "height": 0.55, "idb": "1" },
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
