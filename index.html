@@ -563,6 +563,25 @@
                 }
             };
 
+            //glass circle
+            const glassCircleLayer = new GeoJSONLayer({
+                url: "./geojson/glassCircleLayer.geojson"
+            });
+
+            glassCircleLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.55,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
             ///* ----- ROOF ----- */
             //roofA1Layer
             const roofA1Layer = new GeoJSONLayer({
@@ -616,6 +635,7 @@
                         roofRowLayer,
                         circleA1Layer,
                         surroundCircleLayer,
+                        glassCircleLayer,
                     ] // end layers
             });
 
