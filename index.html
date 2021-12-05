@@ -525,7 +525,43 @@
                     }]
                 }
             };
-            
+
+            ///* ----- Circle ----- */
+            //circleA1Layer
+            const circleA1Layer = new GeoJSONLayer({
+                url: "./geojson/circleA1Layer.geojson"
+            });
+
+            circleA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.55,
+                        material: {
+                            color: "#D6D3CF"
+                        }
+                    }]
+                }
+            };
+
+            //surrounding main circle
+            const surroundCircleLayer = new GeoJSONLayer({
+                url: "./geojson/surroundCircleLayer.geojson"
+            });
+
+            surroundCircleLayer.renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-fill",
+                    color: "#D3DFAE",
+                    outline: {
+                        color: "#8F8454"
+                    }
+                }
+            };
 
             ///* ----- ROOF ----- */
             //roofA1Layer
@@ -578,6 +614,8 @@
                         centerFloorLayer,
                         roofA1Layer,
                         roofRowLayer,
+                        circleA1Layer,
+                        surroundCircleLayer,
                     ] // end layers
             });
 
