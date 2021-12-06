@@ -601,11 +601,107 @@
                 }
             };
 
-            const smallGlassCircleLayer = new GeoJSONLayer({
-                url: "./geojson/smallGlassCircleLayer.geojson"
+            //glass circle B1
+            const glassCircleB1Layer = new GeoJSONLayer({
+                url: "./geojson/glassCircleB1Layer.geojson"
             });
 
-            smallGlassCircleLayer.renderer = {
+            glassCircleB1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
+            //glass circle B2
+            const glassCircleB2Layer = new GeoJSONLayer({
+                url: "./geojson/glassCircleB2Layer.geojson"
+            });
+
+            glassCircleB2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
+            //glass circle B3
+            const glassCircleB3Layer = new GeoJSONLayer({
+                url: "./geojson/glassCircleB3Layer.geojson"
+            });
+
+            glassCircleB3Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
+            //glass circle B4
+            const glassCircleB4Layer = new GeoJSONLayer({
+                url: "./geojson/glassCircleB4Layer.geojson"
+            });
+
+            glassCircleB4Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
+            //glass circle B5
+            const glassCircleB5Layer = new GeoJSONLayer({
+                url: "./geojson/glassCircleB5Layer.geojson"
+            });
+
+            glassCircleB5Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
+            //glass circle B6
+            const glassCircleB6Layer = new GeoJSONLayer({
+                url: "./geojson/glassCircleB6Layer.geojson"
+            });
+
+            glassCircleB6Layer.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -674,7 +770,12 @@
                         surroundCircleLayer,
                         glassCircleLayer,
                         smallCircleLayer,
-                        smallGlassCircleLayer,
+                        glassCircleB1Layer,
+                        glassCircleB2Layer,
+                        glassCircleB3Layer,
+                        glassCircleB4Layer,
+                        glassCircleB5Layer,
+                        glassCircleB6Layer,
                     ] // end layers
             });
 
