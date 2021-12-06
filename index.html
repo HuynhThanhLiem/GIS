@@ -545,6 +545,25 @@
                     }]
                 }
             };
+            //smallCircleLayer
+            const smallCircleLayer = new GeoJSONLayer({
+                url: "./geojson/smallCircleLayer.geojson"
+            });
+
+            smallCircleLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.55,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
 
             //surrounding main circle
             const surroundCircleLayer = new GeoJSONLayer({
@@ -575,6 +594,24 @@
                     symbolLayers: [{
                         type: "extrude",
                         size: 0.55,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
+            const smallGlassCircleLayer = new GeoJSONLayer({
+                url: "./geojson/smallGlassCircleLayer.geojson"
+            });
+
+            smallGlassCircleLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.2,
                         material: {
                             color: "#BED6E5"
                         }
@@ -636,6 +673,8 @@
                         circleA1Layer,
                         surroundCircleLayer,
                         glassCircleLayer,
+                        smallCircleLayer,
+                        smallGlassCircleLayer,
                     ] // end layers
             });
 
