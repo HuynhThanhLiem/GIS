@@ -486,6 +486,25 @@
                 }
             };
 
+            //glassMainDoorLayer
+            const glassMainDoorLayer = new GeoJSONLayer({
+                url: "./geojson/glassMainDoorLayer.geojson"
+            });
+
+            glassMainDoorLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 3.8,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
 
             ///* ----- ROW ----- */
             //rowA1Layer
@@ -513,6 +532,25 @@
             });
 
             roofRowLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.55,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+            
+            //row Circle
+            const rowCircleLayer = new GeoJSONLayer({
+                url: "./geojson/rowCircleLayer.geojson"
+            });
+
+            rowCircleLayer.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -735,6 +773,64 @@
                 }
             };
 
+             //roofColumnLayer
+            const roofColumnLayer = new GeoJSONLayer({
+                url: "./geojson/roofColumnLayer.geojson"
+            });
+
+            roofColumnLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 2,
+                        material: {
+                            color: "#FBF9F3"
+                        }
+                    }]
+                }
+            };
+
+            ///* ----- DOOR ----- */
+            //mainDoorA1Layer
+            const mainDoorA1Layer = new GeoJSONLayer({
+                url: "./geojson/mainDoorA1Layer.geojson"
+            });
+
+            mainDoorA1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.1,
+                        material: {
+                            color: "#716650"
+                        }
+                    }]
+                }
+            };
+
+            //mainDoorA2Layer
+            const mainDoorA2Layer = new GeoJSONLayer({
+                url: "./geojson/mainDoorA2Layer.geojson"
+            });
+
+            mainDoorA2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 4,
+                        material: {
+                            color: "#716650"
+                        }
+                    }]
+                }
+            };
+
         
             const map = new Map({
                 basemap: "topo-vector",
@@ -776,6 +872,11 @@
                         glassCircleB4Layer,
                         glassCircleB5Layer,
                         glassCircleB6Layer,
+                        rowCircleLayer,
+                        roofColumnLayer,
+                        mainDoorA1Layer,
+                        mainDoorA2Layer,
+                        glassMainDoorLayer,
                     ] // end layers
             });
 
