@@ -157,6 +157,7 @@
                 url: "./geojson/railingA1Layer.geojson"
             });
 
+            
             railingA1Layer.renderer = {
                 type: "simple",
                 field: "mag",
@@ -611,15 +612,34 @@
 
             surroundCircleLayer.renderer = {
                 type: "simple",
-                field: "mag",
                 symbol: {
-                    type: "simple-fill",
-                    color: "#D3DFAE",
-                    outline: {
-                        color: "#8F8454"
-                    }
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0,
+                        material: {
+                            color: "#D3DFAE",
+                        },
+                        edges: {
+                            type: "solid",
+                            size: "1px",
+                            color: "#8F8454",
+                        }
+                    }]
                 }
             };
+
+            // surroundCircleLayer.renderer = {
+            //     type: "simple",
+            //     field: "mag",
+            //     symbol: {
+            //         type: "simple-fill",
+            //         color: "#D3DFAE",
+            //         outline: {
+            //             color: "#8F8454"
+            //         }
+            //     }
+            // };
 
             //glass circle
             const glassCircleLayer = new GeoJSONLayer({
