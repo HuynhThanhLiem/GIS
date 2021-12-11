@@ -870,10 +870,10 @@
                 }
             };
 
-            const glassFrontDoor = new GeoJSONLayer({
-                url: "./geojson/glassFrontDoor.geojson"
+            const FrontDoor = new GeoJSONLayer({
+                url: "./geojson/FrontDoor.geojson"
             });
-            glassFrontDoor.renderer = {
+            FrontDoor.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -1047,7 +1047,7 @@
                         FourthFifthFloorLayer,
                         AAAFloorLayer,
                         RoofFloorLayer,
-                        glassFrontDoor,
+                        FrontDoor,
                         frontGlassDoor,
                     ] // end layers
             });

@@ -6,7 +6,7 @@
     "features": [
         {
             "type": "Feature",
-            "properties": { "Building name": "Glass Main Door", "height": 3.8, "idb": "1" },
+            "properties": { "Building name": "Glass Front Door", "height": 3.8, "idb": "1" },
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
