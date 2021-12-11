@@ -1,0 +1,25 @@
+{
+    "type": "FeatureCollection",
+    "generator": "smartcity",
+    "copyright": "Smartcity",
+    "timestamp": "2021-05-27T09:28:58Z",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": { "Building name": "Glass Main Door", "height": 3.8, "idb": "1" },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [105.83716754645131,21.037230604066625,15.4],
+                        [105.83716848963344,21.037230420158906,15.4],
+                        [105.83713089797321,21.03707130074167,15.4],
+                        [105.83713184115433,21.037071116833953,15.4],
+                        [105.83716754645131,21.037230604066625,15.4]
+                    ]
+                ]
+            },
+            "id": "pp1"
+        }
+	]
+}

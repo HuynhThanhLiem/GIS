@@ -506,6 +506,24 @@
                 }
             };
 
+            const frontGlassDoor = new GeoJSONLayer({
+                url: "./geojson/frontGlassDoor.geojson"
+            });
+
+            frontGlassDoor.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 1.875,
+                        material: {
+                            color: "#BED6E5"
+                        }
+                    }]
+                }
+            };
+
 
             ///* ----- ROW ----- */
             //rowA1Layer
@@ -852,6 +870,23 @@
                 }
             };
 
+            const glassFrontDoor = new GeoJSONLayer({
+                url: "./geojson/glassFrontDoor.geojson"
+            });
+            glassFrontDoor.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 2.057,
+                        material: {
+                            color: "#716650"
+                        }
+                    }]
+                }
+            };
+
             const RoofFloorLayer = new GeoJSONLayer({
                 url: "./geojson/RoofFloorLayer.geojson"
             });
@@ -960,8 +995,7 @@
                 }
             };
 
-
-        
+                 
             const map = new Map({
                 basemap: "topo-vector",
                 ground: "world-elevation",
@@ -1013,6 +1047,8 @@
                         FourthFifthFloorLayer,
                         AAAFloorLayer,
                         RoofFloorLayer,
+                        glassFrontDoor,
+                        frontGlassDoor,
                     ] // end layers
             });
 
