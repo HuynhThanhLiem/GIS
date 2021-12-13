@@ -315,20 +315,77 @@
                 }
             };
 
-            //secondFloorLayer
-            const secondFloorLayer = new GeoJSONLayer({
-                url: "./geojson/secondFloorLayer.geojson"
+            //firstFloorLayer
+            const firstFloorTransLayer = new GeoJSONLayer({
+                url: "./geojson/firstFloorTransLayer.geojson"
             });
 
-            secondFloorLayer.renderer = {
+            firstFloorTransLayer.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
                     symbolLayers: [{
                         type: "extrude",
-                        size: 5.55,
+                        size: 6.45,
                         material: {
-                            color: "#C3BFB5"
+                            color: "rgba(211, 228, 205, 0.5)"
+                        }
+                    }]
+                }
+            };
+
+            //secondFloorLayer
+            const secondFloorFoundLayer = new GeoJSONLayer({
+                url: "./geojson/secondFloorFoundLayer.geojson"
+            });
+
+            secondFloorFoundLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.05,
+                        material: {
+                            color: "#C8C6C6"
+                        }
+                    }]
+                }
+            };
+
+            //secondFloorTrans1Layer
+            const secondFloorTrans1Layer = new GeoJSONLayer({
+                url: "./geojson/secondFloorTrans1Layer.geojson"
+            });
+
+            secondFloorTrans1Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 0.5,
+                        material: {
+                            color: "rgba(211, 228, 205, 0.5)"
+                        }
+                    }]
+                }
+            };
+
+            //secondFloorTrans2Layer
+            const secondFloorTrans2Layer = new GeoJSONLayer({
+                url: "./geojson/secondFloorTrans2Layer.geojson"
+            });
+
+            secondFloorTrans2Layer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 4.95,
+                        material: {
+                            color: "rgba(211, 228, 205, 0.5)"
                         }
                     }]
                 }
@@ -886,6 +943,7 @@
                     }]
                 }
             };
+<<<<<<< HEAD
             const frontDoorlong = new GeoJSONLayer({
                 url: "./geojson/frontDoorlong.geojson"
             });
@@ -902,6 +960,8 @@
                     }]
                 }
             };
+=======
+>>>>>>> da950ff1cdbd710687e0942423460996a2f8a1dd
 
             const RoofFloorLayer = new GeoJSONLayer({
                 url: "./geojson/RoofFloorLayer.geojson"
@@ -1037,7 +1097,10 @@
                         glassDoorA1Layer,
                         floorLayer,
                         firstFloorLayer,
-                        secondFloorLayer,
+                        firstFloorTransLayer,
+                        secondFloorFoundLayer,
+                        secondFloorTrans1Layer,
+                        secondFloorTrans2Layer,
                         A3FloorLayer,
                         centerFloorLayer,
                         roofA1Layer,
@@ -1065,7 +1128,10 @@
                         RoofFloorLayer,
                         // FrontDoor,
                         frontGlassDoor,
+<<<<<<< HEAD
                         frontDoorlong, 
+=======
+>>>>>>> da950ff1cdbd710687e0942423460996a2f8a1dd
                     ] // end layers
             });
 
