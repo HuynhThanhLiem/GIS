@@ -315,6 +315,25 @@
                 }
             };
 
+            //firstFloorLayer
+            const firstFloorTransLayer = new GeoJSONLayer({
+                url: "./geojson/firstFloorTransLayer.geojson"
+            });
+
+            firstFloorTransLayer.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 6.45,
+                        material: {
+                            color: "rgba(211, 228, 205, 0.5)"
+                        }
+                    }]
+                }
+            };
+
             //secondFloorLayer
             const secondFloorLayer = new GeoJSONLayer({
                 url: "./geojson/secondFloorLayer.geojson"
@@ -1021,6 +1040,7 @@
                         glassDoorA1Layer,
                         floorLayer,
                         firstFloorLayer,
+                        firstFloorTransLayer,
                         secondFloorLayer,
                         A3FloorLayer,
                         centerFloorLayer,
