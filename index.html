@@ -557,7 +557,7 @@
                         type: "extrude",
                         size: 3.8,
                         material: {
-                            color: "#BED6E5"
+                            color: "rgba(190,214,229,0.5)"
                         }
                     }]
                 }
@@ -575,7 +575,7 @@
                         type: "extrude",
                         size: 1.875,
                         material: {
-                            color: "#BED6E5"
+                            color: "rgba(190,214,229,0.5)"
                         }
                     }]
                 }
@@ -943,6 +943,22 @@
                     }]
                 }
             };
+            const frontDoorlong = new GeoJSONLayer({
+                url: "./geojson/frontDoorlong.geojson"
+            });
+            frontDoorlong.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 6,
+                        material: {
+                            color: "#716650"
+                        }
+                    }]
+                }
+            };
 
             const RoofFloorLayer = new GeoJSONLayer({
                 url: "./geojson/RoofFloorLayer.geojson"
@@ -1107,8 +1123,9 @@
                         FourthFifthFloorLayer,
                         AAAFloorLayer,
                         RoofFloorLayer,
-                        FrontDoor,
+                        // FrontDoor,
                         frontGlassDoor,
+                        frontDoorlong, 
                     ] // end layers
             });
 
