@@ -886,6 +886,22 @@
                     }]
                 }
             };
+            const frontDoorlong = new GeoJSONLayer({
+                url: "./geojson/frontDoorlong.geojson"
+            });
+            frontDoorlong.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 6.057,
+                        material: {
+                            color: "#716650"
+                        }
+                    }]
+                }
+            };
 
             const RoofFloorLayer = new GeoJSONLayer({
                 url: "./geojson/RoofFloorLayer.geojson"
@@ -1049,6 +1065,7 @@
                         RoofFloorLayer,
                         FrontDoor,
                         frontGlassDoor,
+                        frontDoorlong,
                     ] // end layers
             });
 
